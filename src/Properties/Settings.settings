@@ -1,0 +1,15 @@
+﻿<?xml version='1.0' encoding='utf-8'?>
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="TingenNYQVIST.Properties" GeneratedClassName="Settings">
+  <Profiles />
+  <Settings>
+    <Setting Name="TingenNYQVIST_NtstWsvcSboxQuery_Query" Type="(Web Service URL)" Scope="Application">
+      <Value Profile="(Default)">https://spectrumcsp.netsmartcloud.com/csp/spectrumsbox/avpm/WEBSVC.Query.cls</Value>
+    </Setting>
+    <Setting Name="TingenNYQVIST_NtstWsvcUatQuery_Query" Type="(Web Service URL)" Scope="Application">
+      <Value Profile="(Default)">https://spectrumcsp.netsmartcloud.com:443/csp/spectrumuat/avpm/WEBSVC.Query.cls</Value>
+    </Setting>
+    <Setting Name="TingenNYQVIST_NtstWsvcLiveQuery_Query" Type="(Web Service URL)" Scope="Application">
+      <Value Profile="(Default)">https://spectrumcsp.netsmartcloud.com/csp/spectrum/avpm/WEBSVC.Query.cls</Value>
+    </Setting>
+  </Settings>
+</SettingsFile>
