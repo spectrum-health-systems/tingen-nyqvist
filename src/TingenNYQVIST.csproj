@@ -57,7 +57,6 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="NyqvistSession.cs" />
     <Compile Include="Web References\NtstWsvcLiveQuery\Reference.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -171,9 +170,9 @@
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
-    <Content Include="AppData\Config\username.txt">
+    <None Include="AppData\Config\nyqvist.username">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
+    </None>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -30,11 +30,11 @@ namespace TingenNYQVIST
         }
 
         /// <summary>Setup the main window for a new session.</summary>
-        /// <param name="version">The version of Tingen NYQVIST.</param>
-        private void SetupWindow(string version)
+        /// <param name="nyqvistVersion">The version of Tingen NYQVIST.</param>
+        private void SetupWindow(string nyqvistVersion)
         {
-            Title                    = $"Tingen NYQVIST v{version}";
-            txbxNyqvistUserName.Text = GetNyqvistUserName(@"./AppData/Config/username.txt");
+            Title                    = $"Tingen NYQVIST v{nyqvistVersion}";
+            txbxNyqvistUserName.Text = GetNyqvistUserName(@"./AppData/Config/nyqvist.username");
 
         }
 
@@ -49,23 +49,18 @@ namespace TingenNYQVIST
 
         /// <summary>Attempt to perform a query against an Avatar System.</summary>
         /// <param name="sender">The Avatar System button that was pressed.</param>
-        /// <param name="system">The Avatar System to be queried.</param>
-        private void AttemptQuery(object sender, string system)
+        /// <param name="avatarSystem">The Avatar System to be queried.</param>
+        private void AttemptQuery(object sender, string avatarSystem)
         {
             if (txbxQuery.Text != "" && txbxNyqvistUserName.Text != "" && pwbxNyqvistUserPass.Password != "")
             {
                 try
                 {
-                    txbxResult.Text         = PerformQuery(system, txbxNyqvistUserName.Text.Trim(), pwbxNyqvistUserPass.Password, txbxQuery.Text);
+                    txbxResult.Text = PerformQuery(avatarSystem, txbxNyqvistUserName.Text.Trim(), pwbxNyqvistUserPass.Password.Trim(), txbxQuery.Text.Trim());
 
-                    if (!txbxResult.Text.Contains("The sql query which you provided returned an error."))
-                    {
-                        txbxWebServiceCall.Text = UpdateWebServiceCall(system, txbxQuery.Text);
-                    }
-                    else
-                    {
-                        txbxWebServiceCall.Text = "";
-                    }
+                    txbxWebServiceCall.Text = (!txbxResult.Text.Contains("The sql query which you provided returned an error."))
+                        ? UpdateWebServiceCall(avatarSystem, txbxQuery.Text)
+                        : "";
                 }
                 catch (Exception ex)
                 {
@@ -82,36 +77,50 @@ namespace TingenNYQVIST
             }
         }
 
-        private static string PerformQuery(string system, string nyqvistUserName, string nyqvistUserPass, string query)
+        /// <summary>Perform a query against an Avatar System.</summary>
+        /// <param name="avatarSystem">The Avatar System to be queried.</param>
+        /// <param name="nyqvistUserName">The username for the query.</param>
+        /// <param name="nyqvistUserPass">The password for the query.</param>
+        /// <param name="queryString">The query string.</param>
+        /// <returns>The result of the query.</returns>
+        /// <exception cref="ArgumentException"></exception>
+        private static string PerformQuery(string avatarSystem, string nyqvistUserName, string nyqvistUserPass, string queryString)
         {
-            switch (system)
+            switch (avatarSystem)
             {
                 case "LIVE":
-                    return new NtstWsvcLiveQuery.Query().SubmitQuery("LIVE", nyqvistUserName, nyqvistUserPass, query);
+                    return new NtstWsvcLiveQuery.Query().SubmitQuery("LIVE", nyqvistUserName, nyqvistUserPass, queryString);
 
                 case "UAT":
-                    return new NtstWsvcUatQuery.Query().SubmitQuery("UAT", nyqvistUserName, nyqvistUserPass, query);
+                    return new NtstWsvcUatQuery.Query().SubmitQuery("UAT", nyqvistUserName, nyqvistUserPass, queryString);
 
                 case "SBOX":
-                    return new NtstWsvcSboxQuery.Query().SubmitQuery("SBOX", nyqvistUserName, nyqvistUserPass, query);
+                    return new NtstWsvcSboxQuery.Query().SubmitQuery("SBOX", nyqvistUserName, nyqvistUserPass, queryString);
 
                 default:
                     throw new ArgumentException("Invalid system specified.");
             }
         }
 
-        private static string UpdateWebServiceCall(string system, string query)
+        /// <summary>
+        /// Constructs and returns a web service call string based on the specified system and query.
+        /// </summary>
+        /// <param name="avatarSystem">The target system for the web service call. Valid values are "LIVE", "UAT", and "SBOX".</param>
+        /// <param name="queryString">The query string to be included in the web service call.</param>
+        /// <returns>A formatted string representing the web service call for the specified system and query.</returns>
+        /// <exception cref="ArgumentException">Thrown if the <paramref name="avatarSystem"/> parameter is not one of the valid values: "LIVE", "UAT", or "SBOX".</exception>
+        private static string UpdateWebServiceCall(string avatarSystem, string queryString)
         {
-            switch (system)
+            switch (avatarSystem)
             {
                 case "LIVE":
-                    return $"NtstWsvcLiveQuery.Query().SubmitQuery(\"LIVE\", \"USERNAME\", \"PASSWORD\", \"{query}\");";
+                    return $"NtstWsvcLiveQuery.Query().SubmitQuery(\"LIVE\", \"USERNAME\", \"PASSWORD\", \"{queryString}\");";
 
                 case "UAT":
-                    return $"NtstWsvcUatQuery.Query().SubmitQuery(\"UAT\", \"USERNAME\", \"PASSWORD\", \"{query}\");";
+                    return $"NtstWsvcUatQuery.Query().SubmitQuery(\"UAT\", \"USERNAME\", \"PASSWORD\", \"{queryString}\");";
 
                 case "SBOX":
-                    return $"NtstWsvcSboxQuery.Query().SubmitQuery(\"SBOX\", \"USERNAME\", \"PASSWORD\", \"{query}\");";
+                    return $"NtstWsvcSboxQuery.Query().SubmitQuery(\"SBOX\", \"USERNAME\", \"PASSWORD\", \"{queryString}\");";
 
                 default:
                     throw new ArgumentException("Invalid system specified.");
@@ -119,20 +128,12 @@ namespace TingenNYQVIST
 
         }
 
+        /// <summary>Format raw XML.</summary>
         private void FormatXML()
         {
             txbxResult.FontSize = 12;
-            var test = txbxResult.Text;
 
-            var test2 = PrettyPrintXml(test);
-
-            txbxResult.Text = test2;
-        }
-
-        private static string PrettyPrintXml(string xml)
-        {
-            XDocument doc = XDocument.Parse(xml);
-            return doc.ToString();
+            txbxResult.Text = XDocument.Parse(txbxResult.Text).ToString();
         }
 
 
