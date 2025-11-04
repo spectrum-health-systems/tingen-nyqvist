@@ -2,6 +2,9 @@
 
 ## Installing
 
+1. Download the [latest release](https://github.com/spectrum-health-systems/tingen-nyqvist/releases)
+2. Extract the .7z file to a location of your choice
+3. Double click `TingenNYQVIST.exe`
 
 ## Using
 
