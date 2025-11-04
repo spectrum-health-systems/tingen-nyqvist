@@ -56,7 +56,6 @@ namespace TingenNYQVIST
                 try
                 {
                     txbxResult.Text = PerformQuery(avatarSystem, txbxNyqvistUserName.Text.Trim(), pwbxNyqvistUserPass.Password.Trim(), txbxQuery.Text.Trim());
-
                     txbxWebServiceCall.Text = (!txbxResult.Text.Contains("The sql query which you provided returned an error."))
                         ? UpdateWebServiceCall(avatarSystem, txbxQuery.Text)
                         : "";
@@ -64,11 +63,8 @@ namespace TingenNYQVIST
                 catch (Exception ex)
                 {
                     string errorMessage = "An error occurred while submitting query: " + ex.Message + ".";
-
                     MessageBox.Show(errorMessage, "Error", MessageBoxButton.OK, MessageBoxImage.Error);
-
                     txbxResult.Text = errorMessage;
-
                     txbxWebServiceCall.Text = "";
                 }
 
@@ -89,13 +85,10 @@ namespace TingenNYQVIST
             {
                 case "LIVE":
                     return new NtstWsvcLiveQuery.Query().SubmitQuery("LIVE", nyqvistUserName, nyqvistUserPass, queryString);
-
                 case "UAT":
                     return new NtstWsvcUatQuery.Query().SubmitQuery("UAT", nyqvistUserName, nyqvistUserPass, queryString);
-
                 case "SBOX":
                     return new NtstWsvcSboxQuery.Query().SubmitQuery("SBOX", nyqvistUserName, nyqvistUserPass, queryString);
-
                 default:
                     throw new ArgumentException("Invalid system specified.");
             }
@@ -114,13 +107,10 @@ namespace TingenNYQVIST
             {
                 case "LIVE":
                     return $"NtstWsvcLiveQuery.Query().SubmitQuery(\"LIVE\", \"USERNAME\", \"PASSWORD\", \"{queryString}\");";
-
                 case "UAT":
                     return $"NtstWsvcUatQuery.Query().SubmitQuery(\"UAT\", \"USERNAME\", \"PASSWORD\", \"{queryString}\");";
-
                 case "SBOX":
                     return $"NtstWsvcSboxQuery.Query().SubmitQuery(\"SBOX\", \"USERNAME\", \"PASSWORD\", \"{queryString}\");";
-
                 default:
                     throw new ArgumentException("Invalid system specified.");
             }
@@ -131,7 +121,6 @@ namespace TingenNYQVIST
         private void FormatXML()
         {
             txbxResult.FontSize = 12;
-
             txbxResult.Text = XDocument.Parse(txbxResult.Text).ToString();
         }
 
@@ -142,9 +131,7 @@ namespace TingenNYQVIST
             btnLiveSystem.ClearValue(Button.BackgroundProperty);
             btnUatSystem.ClearValue(Button.BackgroundProperty);
             btnSboxSystem.ClearValue(Button.BackgroundProperty);
-
             var button = sender as Button;
-
             button.Background = Brushes.Green;
         }
 
@@ -181,10 +168,7 @@ namespace TingenNYQVIST
         }
 
         /// <summary>Toggle the state of the web service call button.</summary>
-        private void ToggleWebServiceCallButtons()
-        {
-            btnCopyWebServiceCall.IsEnabled = txbxWebServiceCall.Text != "";
-        }
+        private void ToggleWebServiceCallButtons() => btnCopyWebServiceCall.IsEnabled = txbxWebServiceCall.Text != "";   
 
         /*
          * Event Handlers
