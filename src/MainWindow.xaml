@@ -195,8 +195,9 @@
             HorizontalScrollBarVisibility="Auto"
             IsReadOnly="true"
             Text=""
+            TextChanged="txbxWebServiceCall_TextChanged"
             TextWrapping="Wrap"
-            VerticalScrollBarVisibility="Auto" TextChanged="txbxWebServiceCall_TextChanged" />
+            VerticalScrollBarVisibility="Auto" />
         <Button
             x:Name="btnCopyWebServiceCall"
             Width="136"
@@ -204,8 +205,9 @@
             Margin="85,713,0,0"
             HorizontalAlignment="Left"
             VerticalAlignment="Top"
+            Click="btnCopyWebServiceCall_Click"
             Content="Copy web service call"
-            IsEnabled="false" Click="btnCopyWebServiceCall_Click" />
+            IsEnabled="false" />
 
     </Grid>
 </Window>

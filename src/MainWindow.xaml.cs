@@ -1,5 +1,5 @@
 ﻿// =============================================================================
-// TingenNYQVIST
+// Tingen NYQVIST
 // https://github.com/spectrum-health-systems/tingen-nyqvist
 // Copyright (c) A Pretty Cool Program. All rights reserved.
 // Licensed under the Apache 2.0 license.
@@ -35,7 +35,6 @@ namespace TingenNYQVIST
         {
             Title                    = $"Tingen NYQVIST v{nyqvistVersion}";
             txbxNyqvistUserName.Text = GetNyqvistUserName(@"./AppData/Config/nyqvist.username");
-
         }
 
         /// <summary>Get the Avatar username that Tingen NYQVIST will use from an external file.</summary>
@@ -136,7 +135,8 @@ namespace TingenNYQVIST
             txbxResult.Text = XDocument.Parse(txbxResult.Text).ToString();
         }
 
-
+        /// <summary>Highlight the selected Avatar System button.</summary>
+        /// <param name="sender">The Avatar System button that was pressed.</param>
         private void HighlightSystemButton(object sender)
         {
             btnLiveSystem.ClearValue(Button.BackgroundProperty);
@@ -148,6 +148,7 @@ namespace TingenNYQVIST
             button.Background = Brushes.Green;
         }
 
+        /// <summary>Toggle the state of the Avatar System buttons.</summary>
         private void ToggleSystemButtons()
         {
             if (txbxQuery.Text != "" && txbxNyqvistUserName.Text != "" && pwbxNyqvistUserPass.Password != "")
@@ -164,6 +165,7 @@ namespace TingenNYQVIST
             }
         }
 
+        /// <summary>Toggle the state of the query result buttons.</summary>
         private void ToggleResultButtons()
         {
             if (txbxResult.Text != "")
@@ -178,43 +180,25 @@ namespace TingenNYQVIST
             }
         }
 
+        /// <summary>Toggle the state of the web service call button.</summary>
         private void ToggleWebServiceCallButtons()
         {
-            if (txbxWebServiceCall.Text != "")
-            {
-                btnCopyWebServiceCall.IsEnabled = true;
-            }
-            else
-            {
-                btnCopyWebServiceCall.IsEnabled = false;
-            }
+            btnCopyWebServiceCall.IsEnabled = txbxWebServiceCall.Text != "";
         }
 
+        /*
+         * Event Handlers
+         */
 
         private void pwbxNyqvistUserPass_PasswordChanged(object sender, RoutedEventArgs e) => ToggleSystemButtons();
-
-
+        private void txbxQuery_TextChanged(object sender, TextChangedEventArgs e) => ToggleSystemButtons();
         private void btnLiveSystem_Click(object sender, RoutedEventArgs e) => AttemptQuery(sender, "LIVE");
-
         private void btnUatSystem_Click(object sender, RoutedEventArgs e) => AttemptQuery(sender, "UAT");
         private void btnSboxSystem_Click(object sender, RoutedEventArgs e) => AttemptQuery(sender, "SBOX");
-
-        private void btnFormatResultXml_Click(object sender, RoutedEventArgs e) => FormatXML();
-
-        private void btnCopyResultXml_Click(object sender, RoutedEventArgs e)
-        {
-            Clipboard.SetText(txbxResult.Text);
-        }
-
-        private void txbxQuery_TextChanged(object sender, TextChangedEventArgs e) => ToggleSystemButtons();
-
         private void txbxResult_TextChanged(object sender, TextChangedEventArgs e) => ToggleResultButtons();
-
-        private void btnCopyWebServiceCall_Click(object sender, RoutedEventArgs e)
-        {
-            Clipboard.SetText(txbxWebServiceCall.Text);
-        }
-
+        private void btnFormatResultXml_Click(object sender, RoutedEventArgs e) => FormatXML();
+        private void btnCopyResultXml_Click(object sender, RoutedEventArgs e) => Clipboard.SetText(txbxResult.Text);
         private void txbxWebServiceCall_TextChanged(object sender, TextChangedEventArgs e) => ToggleWebServiceCallButtons();
+        private void btnCopyWebServiceCall_Click(object sender, RoutedEventArgs e) => Clipboard.SetText(txbxWebServiceCall.Text);
     }
 }
