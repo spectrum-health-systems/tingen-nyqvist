@@ -7,28 +7,23 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     Title="MainWindow"
     Width="1000"
-    Height="415"
+    Height="800"
+    ResizeMode="NoResize"
+    WindowStartupLocation="CenterScreen"
     mc:Ignorable="d">
     <Grid>
         <Image
             x:Name="imgNyqvistLogo"
             Width="256"
             Height="256"
-            Margin="-20,0,0,0"
+            Margin="-20,12,0,0"
             HorizontalAlignment="Left"
             VerticalAlignment="Top"
             Source="/AppData/Image/Logo/tingen-nyqvist-logo-256x256.png" />
-        <Border
-            x:Name="brdrHorizontalSeparator"
-            Width="1"
-            Height="400"
-            Margin="0,15,550,14"
-            BorderBrush="  Black"
-            BorderThickness="1" />
         <Label
             x:Name="lblNyqvistUserName"
             Width="75"
-            Margin="10,261,0,0"
+            Margin="10,276,0,0"
             HorizontalAlignment="Left"
             VerticalAlignment="Top"
             HorizontalContentAlignment="Right"
@@ -36,25 +31,38 @@
             Content="Username"
             FontFamily="Bahnschrift SemiBold"
             FontSize="14"
-            Foreground="White" />
+            Foreground="White">
+            <Label.Resources>
+                <Style TargetType="{x:Type Border}">
+                    <Setter Property="CornerRadius" Value="5,0,0,5" />
+                </Style>
+            </Label.Resources>
+        </Label>
         <TextBox
             x:Name="txbxNyqvistUserName"
             Width="120"
             Height="27"
-            Margin="85,261,0,0"
+            Margin="85,276,0,0"
             Padding="5,0,5,0"
             HorizontalAlignment="Left"
             VerticalAlignment="Top"
             VerticalContentAlignment="Center"
+            BorderBrush="Black"
             CharacterCasing="Upper"
             FontFamily="Bahnschrift"
             FontSize="14"
             Text=""
-            TextWrapping="NoWrap" />
+            TextWrapping="NoWrap">
+            <TextBox.Resources>
+                <Style TargetType="{x:Type Border}">
+                    <Setter Property="CornerRadius" Value="0,5,5,0" />
+                </Style>
+            </TextBox.Resources>
+        </TextBox>
         <Label
             x:Name="lblNyqvistUserPassword"
             Width="75"
-            Margin="10,293,0,0"
+            Margin="10,308,0,0"
             HorizontalAlignment="Left"
             VerticalAlignment="Top"
             HorizontalContentAlignment="Right"
@@ -62,29 +70,337 @@
             Content="Password"
             FontFamily="Bahnschrift SemiBold"
             FontSize="14"
-            Foreground="White" />
+            Foreground="White">
+            <Label.Resources>
+                <Style TargetType="{x:Type Border}">
+                    <Setter Property="CornerRadius" Value="5,0,0,5" />
+                </Style>
+            </Label.Resources>
+        </Label>
         <TextBox
             x:Name="txbxNyqvistUserPassword"
             Width="120"
             Height="27"
-            Margin="85,293,0,0"
+            Margin="85,308,0,0"
             Padding="5,0,5,0"
             HorizontalAlignment="Left"
             VerticalAlignment="Top"
             VerticalContentAlignment="Center"
+            BorderBrush="Black"
             FontFamily="Bahnschrift"
             FontSize="14"
             Text=""
-            TextWrapping="NoWrap" />
+            TextWrapping="NoWrap">
+            <TextBox.Resources>
+                <Style TargetType="{x:Type Border}">
+                    <Setter Property="CornerRadius" Value="0,5,5,0" />
+                </Style>
+            </TextBox.Resources>
+        </TextBox>
         <Button
             x:Name="btnNyqvistLogin"
             Width="60"
             Height="27"
-            Margin="145,325,0,0"
+            Margin="145,340,0,0"
             HorizontalAlignment="Left"
             VerticalAlignment="Top"
             Content="Login"
-            IsEnabled="False" />
+            IsEnabled="False">
+            <Button.Resources>
+                <Style TargetType="{x:Type Border}">
+                    <Setter Property="CornerRadius" Value="5" />
+                </Style>
+            </Button.Resources>
+        </Button>
+        <TextBox
+            x:Name="txbxQuery"
+            Width="739"
+            Height="250"
+            Margin="228,15,0,0"
+            Padding="10,40,10,5"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Top"
+            HorizontalContentAlignment="Center"
+            VerticalContentAlignment="Center"
+            AcceptsReturn="True"
+            BorderBrush="Black"
+            BorderThickness="2"
+            FontFamily="Cascadia Mono"
+            FontSize="12"
+            Text="Type or paste a SQL query here"
+            TextWrapping="Wrap"
+            VerticalScrollBarVisibility="Auto">
+            <TextBox.Resources>
+                <Style TargetType="{x:Type Border}">
+                    <Setter Property="CornerRadius" Value="6" />
+                </Style>
+            </TextBox.Resources>
+        </TextBox>
+        <Label
+            x:Name="lblQuery"
+            Width="75"
+            Margin="228,15,0,0"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Top"
+            HorizontalContentAlignment="center"
+            Background="Black"
+            BorderBrush="black"
+            BorderThickness="0"
+            Content="Query"
+            FontFamily="Bahnschrift SemiLight"
+            FontSize="18"
+            Foreground="White">
+            <Label.Resources>
+                <Style TargetType="{x:Type Border}">
+                    <Setter Property="CornerRadius" Value="6,0,6,0" />
+                </Style>
+            </Label.Resources>
+        </Label>
+        <Button
+            x:Name="btnCopyQuery"
+            Width="26"
+            Height="26"
+            Margin="337,19,0,0"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Top"
+            BorderThickness="0"
+            Content="">
+            <Button.Background>
+                <ImageBrush ImageSource="/AppData/Image/Control/copy-48.png" />
+            </Button.Background>
+        </Button>
+        <Button
+            x:Name="btnPasteQuery"
+            Width="26"
+            Height="26"
+            Margin="308,19,0,0"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Top"
+            BorderThickness="0"
+            Content="">
+            <Button.Background>
+                <ImageBrush ImageSource="/AppData/Image/Control/paste-48.png" />
+            </Button.Background>
+        </Button>
+
+        <Button
+            x:Name="btnClearQuery"
+            Width="26"
+            Height="26"
+            Margin="366,19,0,0"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Top"
+            BorderThickness="0"
+            Content="">
+            <Button.Background>
+                <ImageBrush ImageSource="/AppData/Image/Control/reset-48.png" />
+            </Button.Background>
+        </Button>
+        <TextBox
+            x:Name="txbxQueryResult"
+            Width="739"
+            Height="250"
+            Margin="228,317,0,0"
+            Padding="10,40,10,5"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Top"
+            HorizontalContentAlignment="Center"
+            VerticalContentAlignment="Center"
+            AcceptsReturn="True"
+            BorderBrush="Black"
+            BorderThickness="2"
+            FontFamily="Cascadia Mono"
+            FontSize="12"
+            Text="Click a system button to run the SQL query"
+            TextWrapping="Wrap"
+            VerticalScrollBarVisibility="Auto">
+            <TextBox.Resources>
+                <Style TargetType="{x:Type Border}">
+                    <Setter Property="CornerRadius" Value="6" />
+                </Style>
+            </TextBox.Resources>
+        </TextBox>
+        <Label
+            x:Name="lblQueryResult"
+            Width="122"
+            Margin="228,319,0,0"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Top"
+            HorizontalContentAlignment="center"
+            Background="Black"
+            BorderBrush="black"
+            BorderThickness="0"
+            Content="Query result"
+            FontFamily="Bahnschrift SemiLight"
+            FontSize="18"
+            Foreground="White">
+            <Label.Resources>
+                <Style TargetType="{x:Type Border}">
+                    <Setter Property="CornerRadius" Value="6,0,6,0" />
+                </Style>
+            </Label.Resources>
+        </Label>
+        <Button
+            x:Name="btnQueryLive"
+            Width="60"
+            Height="27"
+            Margin="315,277,0,0"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Top"
+            Content="LIVE"
+            IsEnabled="False">
+            <Button.Resources>
+                <Style TargetType="{x:Type Border}">
+                    <Setter Property="CornerRadius" Value="5" />
+                </Style>
+            </Button.Resources>
+        </Button>
+        <Button
+            x:Name="btnQuerySbox"
+            Width="60"
+            Height="27"
+            Margin="455,277,0,0"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Top"
+            Content="SBOX"
+            IsEnabled="False">
+            <Button.Resources>
+                <Style TargetType="{x:Type Border}">
+                    <Setter Property="CornerRadius" Value="5" />
+                </Style>
+            </Button.Resources>
+        </Button>
+        <Button
+            x:Name="btnQueryUat"
+            Width="60"
+            Height="27"
+            Margin="385,277,0,0"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Top"
+            Content="UAT"
+            IsEnabled="False">
+            <Button.Resources>
+                <Style TargetType="{x:Type Border}">
+                    <Setter Property="CornerRadius" Value="5" />
+                </Style>
+            </Button.Resources>
+        </Button>
+        <Button
+            x:Name="btnQueryBld"
+            Width="60"
+            Height="27"
+            Margin="525,277,0,0"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Top"
+            Content="BLD"
+            IsEnabled="False">
+            <Button.Resources>
+                <Style TargetType="{x:Type Border}">
+                    <Setter Property="CornerRadius" Value="5" />
+                </Style>
+            </Button.Resources>
+        </Button>
+        <Label
+            x:Name="lblQuerySystem"
+            Width="76"
+            Margin="228,275,0,0"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Top"
+            HorizontalContentAlignment="center"
+            Background="Black"
+            BorderBrush="black"
+            BorderThickness="0"
+            Content="System"
+            FontFamily="Bahnschrift SemiLight"
+            FontSize="18"
+            Foreground="White">
+            <Label.Resources>
+                <Style TargetType="{x:Type Border}">
+                    <Setter Property="CornerRadius" Value="6,0,0,6" />
+                </Style>
+            </Label.Resources>
+        </Label>
+        <Button
+            x:Name="btnCopyResult"
+            Width="26"
+            Height="26"
+            Margin="391,323,0,0"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Top"
+            BorderThickness="0"
+            Content="">
+            <Button.Background>
+                <ImageBrush ImageSource="/AppData/Image/Control/copy-48.png" />
+            </Button.Background>
+        </Button>
+        <Button
+            x:Name="btnFormatXml"
+            Width="28"
+            Height="28"
+            Margin="359,322,0,0"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Top"
+            BorderThickness="0"
+            Content="">
+            <Button.Background>
+                <ImageBrush ImageSource="/AppData/Image/Control/format-xml-48.png" />
+            </Button.Background>
+        </Button>
+        <TextBox
+            x:Name="txbxWebServiceCall"
+            Width="739"
+            Height="167"
+            Margin="228,581,0,0"
+            Padding="10,40,10,5"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Top"
+            AcceptsReturn="True"
+            BorderBrush="Black"
+            BorderThickness="2"
+            FontFamily="Cascadia Mono"
+            FontSize="12"
+            Text=""
+            TextWrapping="Wrap"
+            VerticalScrollBarVisibility="Auto">
+            <TextBox.Resources>
+                <Style TargetType="{x:Type Border}">
+                    <Setter Property="CornerRadius" Value="6" />
+                </Style>
+            </TextBox.Resources>
+        </TextBox>
+        <Label
+            x:Name="lblTingenWebServiceCall"
+            Width="217"
+            Margin="228,583,0,0"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Top"
+            HorizontalContentAlignment="center"
+            Background="Black"
+            BorderBrush="black"
+            BorderThickness="0"
+            Content="Tingen Web Service call"
+            FontFamily="Bahnschrift SemiLight"
+            FontSize="18"
+            Foreground="White">
+            <Label.Resources>
+                <Style TargetType="{x:Type Border}">
+                    <Setter Property="CornerRadius" Value="6,0,6,0" />
+                </Style>
+            </Label.Resources>
+        </Label>
+        <Button
+            x:Name="btnCopyWebServiceCall"
+            Width="26"
+            Height="26"
+            Margin="451,586,0,0"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Top"
+            BorderThickness="0"
+            Content="">
+            <Button.Background>
+                <ImageBrush ImageSource="/AppData/Image/Control/copy-48.png" />
+            </Button.Background>
+        </Button>
 
 
     </Grid>
