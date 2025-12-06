@@ -8,4 +8,16 @@
     <UseWPF>true</UseWPF>
   </PropertyGroup>
 
+  <ItemGroup>
+    <None Remove="AppData\Image\Logo\tingen-nyqvist-logo-128x128.png" />
+    <None Remove="AppData\Image\Logo\tingen-nyqvist-logo-256x256.png" />
+    <None Remove="AppData\Image\Logo\tingen-nyqvist-logo-512x512.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="AppData\Image\Logo\tingen-nyqvist-logo-128x128.png" />
+    <Resource Include="AppData\Image\Logo\tingen-nyqvist-logo-256x256.png" />
+    <Resource Include="AppData\Image\Logo\tingen-nyqvist-logo-512x512.png" />
+  </ItemGroup>
+
 </Project>
