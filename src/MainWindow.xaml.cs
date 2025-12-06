@@ -47,7 +47,7 @@ public partial class MainWindow : Window
             : Brushes.White;
 
     private static void LabelToggle(Label labelToModify, Brush colorOne, Brush colorTwo) =>
-        labelToModify.Foreground = (colorOne == Brushes.LawnGreen && colorTwo == Brushes.LawnGreen)
+        labelToModify.Foreground = (colorOne == Brushes.LawnGreen) && (colorTwo == Brushes.LawnGreen)
             ? Brushes.LawnGreen
             : Brushes.White;
 
@@ -69,7 +69,6 @@ public partial class MainWindow : Window
         {
             lblQuerySystem.Foreground = System.Windows.Media.Brushes.White;
             ToggleSystemButtons(false);
-
         }
     }
 
@@ -88,8 +87,6 @@ public partial class MainWindow : Window
             systemButton.IsEnabled = state;
         }
     }
-
-
 
     /* Event Handlers
      */
