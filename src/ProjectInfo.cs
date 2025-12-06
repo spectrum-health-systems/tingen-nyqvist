@@ -4,15 +4,13 @@
 // Copyright (c) A Pretty Cool Program. All rights reserved.
 // Licensed under the Apache 2.0 license.
 // -----------------------------------------------------------------------------
-// Release 0.1
-// u251104
+// v2.0
 // =============================================================================
 
-namespace TingenNYQVIST
+namespace TingenNyqvist;
+
+internal class ProjectInfo
 {
-    internal class ProjectInfo
-    {
-        /* This class is only used for informational purposes, and does not contain executable code.
-         */
-    }
+    /* This class is only used for informational purposes, and does not contain executable code.
+     */
 }

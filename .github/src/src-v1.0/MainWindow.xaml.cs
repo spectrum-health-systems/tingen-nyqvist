@@ -29,23 +29,6 @@ namespace TingenNYQVIST
             SetupWindow(Assembly.GetExecutingAssembly().GetName().Version.ToString());
         }
 
-        /// <summary>Setup the main window for a new session.</summary>
-        /// <param name="nyqvistVersion">The version of Tingen NYQVIST.</param>
-        private void SetupWindow(string nyqvistVersion)
-        {
-            Title                    = $"Tingen NYQVIST v{nyqvistVersion}";
-            txbxNyqvistUserName.Text = GetNyqvistUserName(@"./AppData/Config/nyqvist.username");
-        }
-
-        /// <summary>Get the Avatar username that Tingen NYQVIST will use from an external file.</summary>
-        /// <remarks>
-        ///   If the username file does not exist, an empty string is returned.
-        /// </remarks>
-        /// <returns>An Avatar username.</returns>
-        private string GetNyqvistUserName(string usernameFile) => (File.Exists(usernameFile))
-                ? File.ReadAllText(usernameFile)
-                : "";
-
         /// <summary>Attempt to perform a query against an Avatar System.</summary>
         /// <param name="sender">The Avatar System button that was pressed.</param>
         /// <param name="avatarSystem">The Avatar System to be queried.</param>

@@ -6,6 +6,9 @@
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
     <UseWPF>true</UseWPF>
+    <FileVersion>2.0.0.0</FileVersion>
+    <AssemblyVersion>2.0.0.0</AssemblyVersion>
+    <Version>2.0.0</Version>
   </PropertyGroup>
 
   <ItemGroup>
@@ -34,6 +37,12 @@
     <Resource Include="AppData\Image\Logo\tingen-nyqvist-logo-128x128.png" />
     <Resource Include="AppData\Image\Logo\tingen-nyqvist-logo-256x256.png" />
     <Resource Include="AppData\Image\Logo\tingen-nyqvist-logo-512x512.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="AppData\Config\README.md">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
 
 </Project>
