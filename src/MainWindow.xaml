@@ -21,7 +21,7 @@
             VerticalAlignment="Top"
             Source="/AppData/Image/Logo/tingen-nyqvist-logo-256x256.png" />
         <Label
-            x:Name="lblNyqvistUserName"
+            x:Name="lblNyqvistUser"
             Width="75"
             Margin="10,276,0,0"
             HorizontalAlignment="Left"
@@ -39,7 +39,7 @@
             </Label.Resources>
         </Label>
         <TextBox
-            x:Name="txbxNyqvistUserName"
+            x:Name="txbxNyqvistUser"
             Width="120"
             Height="27"
             Margin="85,276,0,0"
@@ -52,7 +52,8 @@
             FontFamily="Bahnschrift"
             FontSize="14"
             Text=""
-            TextWrapping="NoWrap" TextChanged="txbxNyqvistUserName_TextChanged">
+            TextChanged="txbxNyqvistUser_TextChanged"
+            TextWrapping="NoWrap">
             <TextBox.Resources>
                 <Style TargetType="{x:Type Border}">
                     <Setter Property="CornerRadius" Value="0,5,5,0" />
@@ -60,7 +61,7 @@
             </TextBox.Resources>
         </TextBox>
         <Label
-            x:Name="lblNyqvistUserPassword"
+            x:Name="lblNyqvistPass"
             Width="75"
             Margin="10,308,0,0"
             HorizontalAlignment="Left"
@@ -78,7 +79,7 @@
             </Label.Resources>
         </Label>
         <TextBox
-            x:Name="txbxNyqvistUserPassword"
+            x:Name="txbxNyqvistPass"
             Width="120"
             Height="27"
             Margin="85,308,0,0"
@@ -90,7 +91,8 @@
             FontFamily="Bahnschrift"
             FontSize="14"
             Text=""
-            TextWrapping="NoWrap" TextChanged="txbxNyqvistUserPassword_TextChanged">
+            TextChanged="txbxNyqvistPass_TextChanged"
+            TextWrapping="NoWrap">
             <TextBox.Resources>
                 <Style TargetType="{x:Type Border}">
                     <Setter Property="CornerRadius" Value="0,5,5,0" />
@@ -107,13 +109,14 @@
             VerticalAlignment="Top"
             AcceptsReturn="True"
             BorderBrush="Black"
-            IsEnabled="false"
             BorderThickness="2"
             FontFamily="Cascadia Mono"
             FontSize="12"
+            IsEnabled="false"
             Text=""
+            TextChanged="txbxQuery_TextChanged"
             TextWrapping="Wrap"
-            VerticalScrollBarVisibility="Auto" TextChanged="txbxQuery_TextChanged">
+            VerticalScrollBarVisibility="Auto">
             <TextBox.Resources>
                 <Style TargetType="{x:Type Border}">
                     <Setter Property="CornerRadius" Value="6" />
@@ -285,7 +288,7 @@
             </Button.Resources>
         </Button>
         <Label
-            x:Name="lblQuerySystem"
+            x:Name="lblAvatarSystems"
             Width="76"
             Margin="228,275,0,0"
             HorizontalAlignment="Left"
