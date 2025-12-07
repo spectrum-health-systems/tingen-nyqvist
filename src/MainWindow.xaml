@@ -143,45 +143,28 @@
                 </Style>
             </Label.Resources>
         </Label>
-        <Button
-            x:Name="btnCopyQuery"
-            Width="26"
-            Height="26"
-            Margin="337,19,0,0"
-            HorizontalAlignment="Left"
-            VerticalAlignment="Top"
-            BorderThickness="0"
-            Content="">
-            <Button.Background>
-                <ImageBrush ImageSource="/AppData/Image/Control/copy-48.png" />
-            </Button.Background>
-        </Button>
-        <Button
-            x:Name="btnPasteQuery"
-            Width="26"
-            Height="26"
-            Margin="308,19,0,0"
-            HorizontalAlignment="Left"
-            VerticalAlignment="Top"
-            BorderThickness="0"
-            Content="">
-            <Button.Background>
-                <ImageBrush ImageSource="/AppData/Image/Control/paste-48.png" />
-            </Button.Background>
-        </Button>
 
         <Button
-            x:Name="btnClearQuery"
-            Width="26"
-            Height="26"
-            Margin="366,19,0,0"
+            x:Name="btnQueryReset"
+            Width="48"
+            Height="22"
+            Margin="308,21,0,0"
+            Padding="0,2,0,0"
             HorizontalAlignment="Left"
             VerticalAlignment="Top"
-            BorderThickness="0"
-            Content="">
-            <Button.Background>
-                <ImageBrush ImageSource="/AppData/Image/Control/reset-48.png" />
-            </Button.Background>
+            Foreground="LawnGreen"
+            Background="DarkGreen"
+            BorderBrush="LawnGreen"
+            BorderThickness="1"
+            Click="btnQueryReset_Click"
+            Content="Reset"
+            FontFamily="Bahnschrift SemiLight"
+            FontSize="12">
+            <Button.Resources>
+                <Style TargetType="{x:Type Border}">
+                    <Setter Property="CornerRadius" Value="4" />
+                </Style>
+            </Button.Resources>
         </Button>
         <TextBox
             x:Name="txbxQueryResult"
@@ -198,7 +181,7 @@
             BorderThickness="2"
             FontFamily="Cascadia Mono"
             FontSize="12"
-            Text="Click a system button to run the SQL query"
+            Text=""
             TextWrapping="Wrap"
             VerticalScrollBarVisibility="Auto">
             <TextBox.Resources>
@@ -308,30 +291,25 @@
             </Label.Resources>
         </Label>
         <Button
-            x:Name="btnCopyResult"
-            Width="26"
-            Height="26"
-            Margin="391,323,0,0"
-            HorizontalAlignment="Left"
-            VerticalAlignment="Top"
-            BorderThickness="0"
-            Content="">
-            <Button.Background>
-                <ImageBrush ImageSource="/AppData/Image/Control/copy-48.png" />
-            </Button.Background>
-        </Button>
-        <Button
             x:Name="btnFormatXml"
-            Width="28"
-            Height="28"
-            Margin="359,322,0,0"
+            Width="84"
+            Height="22"
+            Margin="354,323,0,0"
+            Padding="0,2,0,0"
+            Foreground="LawnGreen"
+            Background="DarkGreen"
+            BorderBrush="LawnGreen"
             HorizontalAlignment="Left"
             VerticalAlignment="Top"
-            BorderThickness="0"
-            Content="">
-            <Button.Background>
-                <ImageBrush ImageSource="/AppData/Image/Control/format-xml-48.png" />
-            </Button.Background>
+            BorderThickness="1"
+            Content="Format XML"
+            FontFamily="Bahnschrift SemiLight"
+            FontSize="12">
+            <Button.Resources>
+                <Style TargetType="{x:Type Border}">
+                    <Setter Property="CornerRadius" Value="4" />
+                </Style>
+            </Button.Resources>
         </Button>
         <TextBox
             x:Name="txbxWebServiceCall"

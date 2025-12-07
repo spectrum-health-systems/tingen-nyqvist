@@ -1,10 +1,11 @@
-﻿// u251206_code
-// u251206_documentation
+﻿// u251207_code
+// u251207_documentation
 
 using System.IO;
 
 namespace TingenNyqvist;
 
+/// <summary>Logic for Tingen NYQVIST configuration settings.</summary>
 public class Configuration
 {
     public string TingenUserName { get; set; }
@@ -29,9 +30,7 @@ public class Configuration
         return Du.DuJson.ImportFromLocalFile<Configuration>(configPath);
     }
 
-    /// <summary>
-    /// Saves the Tingen NYQVIST configuration settings to the local configuration file.
-    /// </summary>
+    /// <summary>Saves the Tingen NYQVIST configuration settings to the local configuration file.</summary>
     /// <param name="configSettings">The configuration settings.</param>
     /// <param name="configPath">The configuration file path.</param>
     private static void Save(Configuration configSettings, string configPath)

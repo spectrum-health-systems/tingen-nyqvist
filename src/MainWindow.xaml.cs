@@ -36,7 +36,9 @@ public partial class MainWindow : Window
 
     /* Event Handlers
      */
-    private void txbxNyqvistUser_TextChanged(object sender, TextChangedEventArgs e) => ControlMonitor.CredentialChanged(lblNyqvistUser, txbxNyqvistUser, lblNyqvistUser, lblNyqvistPass, lblQuery, txbxQuery, lblAvatarSystems, AvatarSystemButtons);
-    private void txbxNyqvistPass_TextChanged(object sender, TextChangedEventArgs e) => ControlMonitor.CredentialChanged(lblNyqvistPass, txbxNyqvistPass, lblNyqvistUser, lblNyqvistPass, lblQuery, txbxQuery, lblAvatarSystems, AvatarSystemButtons);
-    private void txbxQuery_TextChanged(object sender, TextChangedEventArgs e) => ControlMonitor.QueryChanged(lblQuery.Foreground, txbxQuery.Text, lblAvatarSystems, AvatarSystemButtons);
+    private void txbxNyqvistUser_TextChanged(object sender, TextChangedEventArgs e) => ControlMonitor.CredentialChanged(lblNyqvistUser, txbxNyqvistUser, lblNyqvistUser, lblNyqvistPass, lblQuery, btnQueryReset, txbxQuery, lblAvatarSystems, AvatarSystemButtons);
+    private void txbxNyqvistPass_TextChanged(object sender, TextChangedEventArgs e) => ControlMonitor.CredentialChanged(lblNyqvistPass, txbxNyqvistPass, lblNyqvistUser, lblNyqvistPass, lblQuery, btnQueryReset, txbxQuery, lblAvatarSystems, AvatarSystemButtons);
+    private void txbxQuery_TextChanged(object sender, TextChangedEventArgs e) => ControlMonitor.QueryChanged(lblQuery.Foreground, txbxQuery.Text, btnQueryReset, lblAvatarSystems, AvatarSystemButtons);
+    private void btnQueryReset_Click(object sender, RoutedEventArgs e) => txbxQuery.Clear();
+
 }

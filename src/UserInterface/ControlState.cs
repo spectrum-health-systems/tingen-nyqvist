@@ -1,6 +1,7 @@
 ﻿// u251207_code
 // u251207_documentation
 
+using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media;
 
@@ -39,24 +40,33 @@ namespace TingenNyqvist.UserInterface
         /// <param name="lblPassFgnd">The Nyqvist password label foreground color.</param>
         /// <param name="lblQuery">The query label</param>
         /// <param name="txbxQuery">The query TextBox</param>
-        internal static void QueryLabel(Brush lblUserFgnd, Brush lblPassFgnd, Label lblQuery, TextBox txbxQuery)
+        internal static void QueryLabel(Brush lblUserFgnd, Brush lblPassFgnd, Label lblQuery, Button btnQueryReset, TextBox txbxQuery)
         {
             LabelForground(lblQuery, lblUserFgnd, lblPassFgnd);
-            QueryTextBox(lblQuery, txbxQuery);
+            QueryTextBox(lblQuery, txbxQuery, btnQueryReset);
         }
 
         /// <summary>Sets the enabled state of the query TextBox based on the foreground color of the query label.</summary>
         /// <param name="lblQuery">The query label</param>
         /// <param name="txbxQuery">The query TextBox</param>
-        private static void QueryTextBox(Label lblQuery, TextBox txbxQuery) =>
+        private static void QueryTextBox(Label lblQuery, TextBox txbxQuery, Button btnQueryReset)
+        {
             txbxQuery.IsEnabled = lblQuery.Foreground == Brushes.LawnGreen;
+
+            QueryReset(btnQueryReset, lblQuery.Foreground == Brushes.LawnGreen);
+        }
+
+        private static void QueryReset(Button btnQueryReset, bool btnIsVisible) =>
+            btnQueryReset.Visibility = btnIsVisible
+                ? Visibility.Visible
+                : Visibility.Collapsed;
 
         /// <summary>Sets the Avatar System buttons enabled state based on the status condition.</summary>
         /// <param name="lblQuery">The brush used to determine the status condition.</param>
         /// <param name="txbxQueryContent">The text value used to evaluate whether the label and buttons should be updated</param>
         /// <param name="lblAvatarSystem">The label whose foreground color is updated to indicate the current status.</param>
         /// <param name="avatarSystemButtons">An array of system buttons to be enabled or disabled based on the status condition.</param>
-        internal static void SystemButtons(Brush lblQuery, string txbxQueryContent, Label lblAvatarSystem, Button[] avatarSystemButtons)
+        internal static void AvatarSystems(Brush lblQuery, string txbxQueryContent, Label lblAvatarSystem, Button[] avatarSystemButtons)
         {
             bool buttonsEnabled = !string.IsNullOrWhiteSpace(txbxQueryContent) && lblQuery == Brushes.LawnGreen;
 
@@ -75,7 +85,10 @@ namespace TingenNyqvist.UserInterface
             foreach (var systemButton in avatarSystemButtons)
             {
                 systemButton.IsEnabled = btnState;
+                systemButton.Background = Brushes.LightSeaGreen;
             }
         }
+
+
     }
 }

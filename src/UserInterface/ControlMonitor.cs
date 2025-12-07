@@ -16,11 +16,11 @@ namespace TingenNyqvist.UserInterface
         /// <param name="lblUser">The label control associated with the Nyqvist user input to update.</param>
         /// <param name="lblPassword">The label control associated with the Nyqvist password input to update.</param>
         /// <param name="txbxQuery">The TextBox control associated with the query input to update.</param>
-        internal static void CredentialChanged(Label credentialLabel, TextBox credentialTextBox, Label lblUser, Label lblPassword, Label lblQuery, TextBox txbxQuery, Label lblAvatarSystems, Button[] btnsAvatarSystems)
+        internal static void CredentialChanged(Label credentialLabel, TextBox credentialTextBox, Label lblUser, Label lblPassword, Label lblQuery, Button btnQueryReset, TextBox txbxQuery, Label lblAvatarSystems, Button[] btnsAvatarSystems)
         {
             ControlState.LabelForground(credentialLabel, credentialTextBox.Text);
-            ControlState.QueryLabel(lblUser.Foreground, lblPassword.Foreground, lblQuery, txbxQuery);
-            ControlState.SystemButtons(lblQuery.Foreground, txbxQuery.Text, lblAvatarSystems, btnsAvatarSystems);
+            ControlState.QueryLabel(lblUser.Foreground, lblPassword.Foreground, lblQuery, btnQueryReset, txbxQuery);
+            ControlState.AvatarSystems(lblQuery.Foreground, txbxQuery.Text, lblAvatarSystems, btnsAvatarSystems);
         }
 
         /// <summary>Logic for when the query text has changed.</summary>
@@ -28,9 +28,11 @@ namespace TingenNyqvist.UserInterface
         /// <param name="txbxQueryContent">The current text content of the query text box. May be used to determine control states.</param>
         /// <param name="lblAvatarSystems">The label control associated with system selection or display.</param>
         /// <param name="btnsAvatarSystems">An array of button controls representing available systems to be updated based on the query text.</param>
-        internal static void QueryChanged(Brush lblQueryFgnd, string txbxQueryContent, Label lblAvatarSystems, Button[] btnsAvatarSystems)
+        internal static void QueryChanged(Brush lblQueryFgnd, string txbxQueryContent, Button btnQueryReset, Label lblAvatarSystems, Button[] btnsAvatarSystems)
         {
-            ControlState.SystemButtons(lblQueryFgnd, txbxQueryContent, lblAvatarSystems, btnsAvatarSystems);
+
+
+            ControlState.AvatarSystems(lblQueryFgnd, txbxQueryContent, lblAvatarSystems, btnsAvatarSystems);
         }
     }
 }

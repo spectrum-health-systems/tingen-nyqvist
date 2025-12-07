@@ -13,6 +13,14 @@ namespace TingenNyqvist.UserInterface
         {
             mainWindow.Title                = $"Tingen NYQVIST v{Assembly.GetExecutingAssembly().GetName().Version.ToString()}";
             mainWindow.txbxNyqvistUser.Text = config.TingenUserName.ToUpper().Trim();
+
+            HideControls(mainWindow);
+        }
+
+        private static void HideControls(MainWindow mainWindow)
+        {
+            mainWindow.btnQueryReset.Visibility = System.Windows.Visibility.Collapsed;
+            mainWindow.btnFormatXml.Visibility  = System.Windows.Visibility.Collapsed;
         }
     }
 }
