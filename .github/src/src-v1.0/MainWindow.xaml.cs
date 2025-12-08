@@ -1,34 +1,4 @@
-﻿// =============================================================================
-// Tingen NYQVIST
-// https://github.com/spectrum-health-systems/tingen-nyqvist
-// Copyright (c) A Pretty Cool Program. All rights reserved.
-// Licensed under the Apache 2.0 license.
-// -----------------------------------------------------------------------------
-// u251104_code
-// u251104_documentation
-// =============================================================================
-
-using System;
-using System.IO;
-using System.Reflection;
-using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Media;
-using System.Xml.Linq;
-
-namespace TingenNYQVIST
-{
-    /// <summary>Entry class for Tingen NYQVIST.</summary>
-    public partial class MainWindow : Window
-    {
-        /// <summary>Entry method for Tingen NYQVIST.</summary>
-        public MainWindow()
-        {
-            InitializeComponent();
-
-            SetupWindow(Assembly.GetExecutingAssembly().GetName().Version.ToString());
-        }
-
+﻿
         /// <summary>Attempt to perform a query against an Avatar System.</summary>
         /// <param name="sender">The Avatar System button that was pressed.</param>
         /// <param name="avatarSystem">The Avatar System to be queried.</param>
@@ -100,12 +70,7 @@ namespace TingenNYQVIST
 
         }
 
-        /// <summary>Format raw XML.</summary>
-        private void FormatXML()
-        {
-            txbxResult.FontSize = 12;
-            txbxResult.Text = XDocument.Parse(txbxResult.Text).ToString();
-        }
+
 
         /// <summary>Highlight the selected Avatar System button.</summary>
         /// <param name="sender">The Avatar System button that was pressed.</param>
@@ -118,22 +83,6 @@ namespace TingenNYQVIST
             button.Background = Brushes.Green;
         }
 
-        /// <summary>Toggle the state of the Avatar System buttons.</summary>
-        private void ToggleSystemButtons()
-        {
-            if (txbxQuery.Text != "" && txbxNyqvistUserName.Text != "" && pwbxNyqvistUserPass.Password != "")
-            {
-                btnLiveSystem.IsEnabled = true;
-                btnUatSystem.IsEnabled  = true;
-                btnSboxSystem.IsEnabled = true;
-            }
-            else
-            {
-                btnLiveSystem.IsEnabled = false;
-                btnUatSystem.IsEnabled  = false;
-                btnSboxSystem.IsEnabled = false;
-            }
-        }
 
         /// <summary>Toggle the state of the query result buttons.</summary>
         private void ToggleResultButtons()
@@ -150,8 +99,7 @@ namespace TingenNYQVIST
             }
         }
 
-        /// <summary>Toggle the state of the web service call button.</summary>
-        private void ToggleWebServiceCallButtons() => btnCopyWebServiceCall.IsEnabled = txbxWebServiceCall.Text != "";   
+
 
         /*
          * Event Handlers

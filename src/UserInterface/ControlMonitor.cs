@@ -20,7 +20,7 @@ namespace TingenNyqvist.UserInterface
         {
             ControlState.LabelForground(credentialLabel, credentialTextBox.Text);
             ControlState.QueryLabel(lblUser.Foreground, lblPassword.Foreground, lblQuery, btnQueryReset, txbxQuery);
-            ControlState.AvatarSystems(lblQuery.Foreground, txbxQuery.Text, lblAvatarSystems, btnsAvatarSystems);
+            ControlState.AvatarSystemsToggle(lblQuery.Foreground, txbxQuery.Text, lblAvatarSystems, btnsAvatarSystems);
         }
 
         /// <summary>Logic for when the query text has changed.</summary>
@@ -30,9 +30,7 @@ namespace TingenNyqvist.UserInterface
         /// <param name="btnsAvatarSystems">An array of button controls representing available systems to be updated based on the query text.</param>
         internal static void QueryChanged(Brush lblQueryFgnd, string txbxQueryContent, Button btnQueryReset, Label lblAvatarSystems, Button[] btnsAvatarSystems)
         {
-
-
-            ControlState.AvatarSystems(lblQueryFgnd, txbxQueryContent, lblAvatarSystems, btnsAvatarSystems);
+            ControlState.AvatarSystemsToggle(lblQueryFgnd, txbxQueryContent, lblAvatarSystems, btnsAvatarSystems);
         }
     }
 }

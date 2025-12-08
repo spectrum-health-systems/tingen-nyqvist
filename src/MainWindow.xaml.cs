@@ -36,9 +36,30 @@ public partial class MainWindow : Window
 
     /* Event Handlers
      */
-    private void txbxNyqvistUser_TextChanged(object sender, TextChangedEventArgs e) => ControlMonitor.CredentialChanged(lblNyqvistUser, txbxNyqvistUser, lblNyqvistUser, lblNyqvistPass, lblQuery, btnQueryReset, txbxQuery, lblAvatarSystems, AvatarSystemButtons);
-    private void txbxNyqvistPass_TextChanged(object sender, TextChangedEventArgs e) => ControlMonitor.CredentialChanged(lblNyqvistPass, txbxNyqvistPass, lblNyqvistUser, lblNyqvistPass, lblQuery, btnQueryReset, txbxQuery, lblAvatarSystems, AvatarSystemButtons);
-    private void txbxQuery_TextChanged(object sender, TextChangedEventArgs e) => ControlMonitor.QueryChanged(lblQuery.Foreground, txbxQuery.Text, btnQueryReset, lblAvatarSystems, AvatarSystemButtons);
-    private void btnQueryReset_Click(object sender, RoutedEventArgs e) => txbxQuery.Clear();
+    private void txbxNyqvistUser_TextChanged(object sender, TextChangedEventArgs e) =>
+        ControlMonitor.CredentialChanged(lblNyqvistUser, txbxNyqvistUser, lblNyqvistUser, lblNyqvistPass, lblQuery, btnQueryReset, txbxQuery, lblAvatarSystems, AvatarSystemButtons);
 
+    private void txbxNyqvistPass_TextChanged(object sender, TextChangedEventArgs e) =>
+        ControlMonitor.CredentialChanged(lblNyqvistPass, txbxNyqvistPass, lblNyqvistUser, lblNyqvistPass, lblQuery, btnQueryReset, txbxQuery, lblAvatarSystems, AvatarSystemButtons);
+
+    private void txbxQuery_TextChanged(object sender, TextChangedEventArgs e) =>
+        ControlMonitor.QueryChanged(lblQuery.Foreground, txbxQuery.Text, btnQueryReset, lblAvatarSystems, AvatarSystemButtons);
+
+    private void btnQueryReset_Click(object sender, RoutedEventArgs e) =>
+        txbxQuery.Clear();
+
+    private void btnFormatXml_Click(object sender, RoutedEventArgs e) =>
+        ControlProperty.FormatXML(txbxQueryResult);
+
+    private void btnQueryLive_Click(object sender, RoutedEventArgs e) =>
+        ControlState.AvatarSystemChosen(AvatarSystemButtons, btnQueryLive);
+
+    private void btnQueryUat_Click(object sender, RoutedEventArgs e) =>
+        ControlState.AvatarSystemChosen(AvatarSystemButtons, btnQueryUat);
+
+    private void btnQuerySbox_Click(object sender, RoutedEventArgs e) =>
+        ControlState.AvatarSystemChosen(AvatarSystemButtons, btnQuerySbox);
+
+    private void btnQueryBld_Click(object sender, RoutedEventArgs e) =>
+        ControlState.AvatarSystemChosen(AvatarSystemButtons, btnQueryBld);
 }
