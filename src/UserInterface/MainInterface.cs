@@ -1,5 +1,5 @@
 ﻿// u251207_code
-// u251207_documentation
+// u2512010_documentation
 
 using System.Reflection;
 
@@ -17,6 +17,7 @@ namespace TingenNyqvist.UserInterface
             HideControls(mainWindow);
         }
 
+        /// <summary>Hides the query reset and format XML buttons from the main window.</summary>
         private static void HideControls(MainWindow mainWindow)
         {
             mainWindow.btnQueryReset.Visibility = System.Windows.Visibility.Collapsed;

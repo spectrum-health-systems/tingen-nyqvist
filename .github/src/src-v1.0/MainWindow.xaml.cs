@@ -72,32 +72,20 @@
 
 
 
-        /// <summary>Highlight the selected Avatar System button.</summary>
-        /// <param name="sender">The Avatar System button that was pressed.</param>
-        private void HighlightSystemButton(object sender)
-        {
-            btnLiveSystem.ClearValue(Button.BackgroundProperty);
-            btnUatSystem.ClearValue(Button.BackgroundProperty);
-            btnSboxSystem.ClearValue(Button.BackgroundProperty);
-            var button = sender as Button;
-            button.Background = Brushes.Green;
-        }
-
-
-        /// <summary>Toggle the state of the query result buttons.</summary>
-        private void ToggleResultButtons()
-        {
-            if (txbxResult.Text != "")
-            {
-                btnFormatResultXml.IsEnabled = true;
-                btnCopyResultXml.IsEnabled   = true;
-            }
-            else
-            {
-                btnFormatResultXml.IsEnabled = false;
-                btnCopyResultXml.IsEnabled   = false;
-            }
-        }
+        ///// <summary>Toggle the state of the query result buttons.</summary>
+        //private void ToggleResultButtons()
+        //{
+        //    if (txbxResult.Text != "")
+        //    {
+        //        btnFormatResultXml.IsEnabled = true;
+        //        btnCopyResultXml.IsEnabled   = true;
+        //    }
+        //    else
+        //    {
+        //        btnFormatResultXml.IsEnabled = false;
+        //        btnCopyResultXml.IsEnabled   = false;
+        //    }
+        //}
 
 
 
@@ -105,15 +93,15 @@
          * Event Handlers
          */
 
-        private void pwbxNyqvistUserPass_PasswordChanged(object sender, RoutedEventArgs e) => ToggleSystemButtons();
-        private void txbxQuery_TextChanged(object sender, TextChangedEventArgs e) => ToggleSystemButtons();
-        private void btnLiveSystem_Click(object sender, RoutedEventArgs e) => AttemptQuery(sender, "LIVE");
-        private void btnUatSystem_Click(object sender, RoutedEventArgs e) => AttemptQuery(sender, "UAT");
-        private void btnSboxSystem_Click(object sender, RoutedEventArgs e) => AttemptQuery(sender, "SBOX");
-        private void txbxResult_TextChanged(object sender, TextChangedEventArgs e) => ToggleResultButtons();
-        private void btnFormatResultXml_Click(object sender, RoutedEventArgs e) => FormatXML();
-        private void btnCopyResultXml_Click(object sender, RoutedEventArgs e) => Clipboard.SetText(txbxResult.Text);
-        private void txbxWebServiceCall_TextChanged(object sender, TextChangedEventArgs e) => ToggleWebServiceCallButtons();
-        private void btnCopyWebServiceCall_Click(object sender, RoutedEventArgs e) => Clipboard.SetText(txbxWebServiceCall.Text);
+        //private void pwbxNyqvistUserPass_PasswordChanged(object sender, RoutedEventArgs e) => ToggleSystemButtons();
+        //private void txbxQuery_TextChanged(object sender, TextChangedEventArgs e) => ToggleSystemButtons();
+        //private void btnLiveSystem_Click(object sender, RoutedEventArgs e) => AttemptQuery(sender, "LIVE");
+        //private void btnUatSystem_Click(object sender, RoutedEventArgs e) => AttemptQuery(sender, "UAT");
+        //private void btnSboxSystem_Click(object sender, RoutedEventArgs e) => AttemptQuery(sender, "SBOX");
+        //private void txbxResult_TextChanged(object sender, TextChangedEventArgs e) => ToggleResultButtons();
+        //private void btnFormatResultXml_Click(object sender, RoutedEventArgs e) => FormatXML();
+        //private void btnCopyResultXml_Click(object sender, RoutedEventArgs e) => Clipboard.SetText(txbxResult.Text);
+        //private void txbxWebServiceCall_TextChanged(object sender, TextChangedEventArgs e) => ToggleWebServiceCallButtons();
+        //private void btnCopyWebServiceCall_Click(object sender, RoutedEventArgs e) => Clipboard.SetText(txbxWebServiceCall.Text);
     }
 }

@@ -1,5 +1,5 @@
-﻿// u251208_code
-// u251207_documentation
+﻿// u2512010_code
+// u2512010_documentation
 
 using System.Windows;
 using System.Windows.Controls;
@@ -89,18 +89,16 @@ namespace TingenNyqvist.UserInterface
             }
         }
 
+        /// <summary>Highlights the selected avatar system button and resets the background color of all other system buttons.</summary>
+        /// <param name="avatarSystemButtons">An array of buttons representing available avatar systems. </param>
+        /// <param name="btnChosenSystem">The button corresponding to the selected avatar system.</param>
         internal static void AvatarSystemChosen(Button[] avatarSystemButtons, Button btnChosenSystem)
         {
             foreach (var systemButton in avatarSystemButtons)
             {
-                if (systemButton == btnChosenSystem)
-                {
-                    systemButton.Background = Brushes.LawnGreen;
-                }
-                else
-                {
-                    systemButton.Background = Brushes.LimeGreen;
-                }
+                systemButton.Background =(systemButton == btnChosenSystem)
+                    ? Brushes.LawnGreen
+                    : Brushes.LimeGreen;
             }
         }
     }
